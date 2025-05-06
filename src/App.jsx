@@ -6,7 +6,7 @@ import { routes } from './routes/routes'
 function App() {
 
   return (
-    <Web3Provider>
+  <Web3Provider>
       <RouterProvider router={routes}></RouterProvider>
     </Web3Provider>
   )

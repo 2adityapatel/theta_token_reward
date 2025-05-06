@@ -124,6 +124,39 @@
 	},
 	{
 		"inputs": [],
+		"name": "getDetails",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_leader",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_noOfPlayers",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_totalPlayedGames",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalWins",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getPlayersCount",
 		"outputs": [
 			{

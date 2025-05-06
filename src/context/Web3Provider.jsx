@@ -18,7 +18,7 @@ const Web3Provider = ({ children }) => {
 
   const connectWallet = async () => {
     try {
-      const { provider, signer, chainId, accountAddress, thetaInstance, tokenInstance } =
+      const { provider, signer, chainId, accountAddress, thetaInstance, tokenInstance, teamInstances } =
         await getWeb3State();
       setWeb3State({
         provider,
@@ -26,11 +26,12 @@ const Web3Provider = ({ children }) => {
         accountAddress,
         chainId,
         thetaInstance,
-        tokenInstance
+        tokenInstance,
+        teamInstances
       });
       localStorage.setItem("isWalletConnected", true);
       setIsWalletConnected(true);
-      console.log({ provider, signer, chainId, accountAddress, thetaInstance, tokenInstance });
+      console.log({ provider, signer, chainId, accountAddress, thetaInstance, tokenInstance, teamInstances });
       
     } catch (error) {
       console.error(error);
@@ -41,7 +42,7 @@ const Web3Provider = ({ children }) => {
     const connectWalletOnPageLoad = async () => {
       const isWalletConnected = localStorage.getItem("isWalletConnected");
       if (isWalletConnected === "true") {
-        const { provider, signer, chainId, accountAddress, thetaInstance, tokenInstance } =
+        const { provider, signer, chainId, accountAddress, thetaInstance, tokenInstance, teamInstances } =
           await getWeb3StateSilent();
         setWeb3State({
           provider,
@@ -49,7 +50,8 @@ const Web3Provider = ({ children }) => {
           accountAddress,
           chainId,
           thetaInstance,
-          tokenInstance
+          tokenInstance,
+          teamInstances
         });
         setIsWalletConnected(true);
         console.log("weuwyiuwerywi ");

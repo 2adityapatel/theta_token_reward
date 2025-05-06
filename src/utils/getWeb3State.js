@@ -27,13 +27,21 @@ export const getWeb3State = async () =>  {
         const signer = await provider.getSigner()
 
 
-        const thetaContract = "";
-        const tokenContract = "";
+        const tokenContract = "0x75E3AF310953a7a2B18D11D61ac1893D38a150F9";
+        const thetaContract = "0xC35CBcC97777E8dD6D2938102F60416B7a4F7191";
 
+        
         const thetaInstance = new ethers.Contract(thetaContract, thetaContractAbi, signer );
         const tokenInstance = new ethers.Contract(tokenContract, thetaTokenAbi, signer)
+        
+        const teamAddresses = await thetaInstance.getAllTeams();
+        console.log(teamAddresses);
 
-        return { chainId, provider, signer, accountAddress, thetaInstance, tokenInstance}
+        const teamInstances = teamAddresses.map(address => new ethers.Contract(address, teamAbi, signer));
+        console.log(teamInstances);
+        
+
+        return { chainId, provider, signer, accountAddress, thetaInstance, tokenInstance , teamAddresses, teamInstances }
 
     } catch (error) {
         console.error(error);
