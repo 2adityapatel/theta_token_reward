@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { Web3Context } from "./web3Context";
 import { getWeb3State } from "../utils/getWeb3State";
 import { getWeb3StateSilent } from "../utils/getWeb3StateSilent";
 import { handleAccountChange } from "../utils/handleAccountChange";
 import { handleChainChange } from "../utils/handleChainChange";
+import { PacmanLoader } from "react-spinners";
 
 const Web3Provider = ({ children }) => {
   const [web3State, setWeb3State] = useState({
@@ -11,15 +12,24 @@ const Web3Provider = ({ children }) => {
     signer: null,
     accountAddress: null,
     chainId: null,
-    thetaInstance : null,
-    tokenInstance : null,
+    thetaInstance: null,
+    tokenInstance: null,
   });
   const [isWalletConnected, setIsWalletConnected] = useState(false);
 
+  const [isInitialized, setIsInitialized] = useState(false)
+
   const connectWallet = async () => {
     try {
-      const { provider, signer, chainId, accountAddress, thetaInstance, tokenInstance, teamInstances } =
-        await getWeb3State();
+      const {
+        provider,
+        signer,
+        chainId,
+        accountAddress,
+        thetaInstance,
+        tokenInstance,
+        teamInstances,
+      } = await getWeb3State();
       setWeb3State({
         provider,
         signer,
@@ -27,12 +37,19 @@ const Web3Provider = ({ children }) => {
         chainId,
         thetaInstance,
         tokenInstance,
-        teamInstances
+        teamInstances,
       });
       localStorage.setItem("isWalletConnected", true);
       setIsWalletConnected(true);
-      console.log({ provider, signer, chainId, accountAddress, thetaInstance, tokenInstance, teamInstances });
-      
+      console.log({
+        provider,
+        signer,
+        chainId,
+        accountAddress,
+        thetaInstance,
+        tokenInstance,
+        teamInstances,
+      });
     } catch (error) {
       console.error(error);
     }
@@ -40,10 +57,21 @@ const Web3Provider = ({ children }) => {
 
   useEffect(() => {
     const connectWalletOnPageLoad = async () => {
+
+
       const isWalletConnected = localStorage.getItem("isWalletConnected");
+      console.log(isWalletConnected);
+
       if (isWalletConnected === "true") {
-        const { provider, signer, chainId, accountAddress, thetaInstance, tokenInstance, teamInstances } =
-          await getWeb3StateSilent();
+        const {
+          provider,
+          signer,
+          chainId,
+          accountAddress,
+          thetaInstance,
+          tokenInstance,
+          teamInstances,
+        } = await getWeb3StateSilent();
         setWeb3State({
           provider,
           signer,
@@ -51,13 +79,20 @@ const Web3Provider = ({ children }) => {
           chainId,
           thetaInstance,
           tokenInstance,
-          teamInstances
+          teamInstances,
         });
         setIsWalletConnected(true);
-        console.log("weuwyiuwerywi ");
+
+   
       }
+    
     };
-    connectWalletOnPageLoad();
+    setTimeout(() => {
+      connectWalletOnPageLoad()
+      setIsInitialized(true)
+    }, 2000);
+    // connectWalletOnPageLoad()
+ 
 
     const accountChangeHandler = (accounts) => {
       handleAccountChange(
@@ -82,10 +117,20 @@ const Web3Provider = ({ children }) => {
     };
   }, []);
 
+  
   return (
     <>
       <Web3Context.Provider
-        value={{ isWalletConnected, web3State, connectWallet }}>
+        value={{ isWalletConnected, web3State, connectWallet, isInitialized }}
+      >
+        
+        {/* {loading ? (
+          <div className="flex justify-center items-center min-h-[300px]">
+            <PacmanLoader color="#00bcd4" size={25} />
+          </div>
+        ) : (
+          children
+        )} */}
         {children}
       </Web3Context.Provider>
     </>

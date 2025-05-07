@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import thetaContractAbi from "../constant/thetaContractAbi.json"
 import thetaTokenAbi from "../constant/thetaTokenAbi.json";
+import teamAbi from "../constant/teamAbi.json"
 
 export const getWeb3State = async () =>  {
 

@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router-dom'
 import WalletConnect from './components/wallet/wallet'
-import Web3Provider from './context/web3Provider'
+import Web3Provider from './context/Web3Provider'
 import { routes } from './routes/routes'
 
 function App() {

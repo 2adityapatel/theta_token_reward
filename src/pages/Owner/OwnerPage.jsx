@@ -5,13 +5,12 @@ import { PacmanLoader } from "react-spinners";
 import { toast } from "react-toastify";
 
 const OwnerPage = () => {
-  const { web3State } = useWeb3State();
+  const { web3State, isWalletConnected } = useWeb3State();
   const { thetaInstance, accountAddress } = web3State;
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(thetaInstance);
 
     const checkOwner = async () => {
       try {

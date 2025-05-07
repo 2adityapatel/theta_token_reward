@@ -17,11 +17,11 @@ export const handleAccountChange = async (setIsWalletConnected, accounts, setWeb
             setIsWalletConnected(false);
     }else{
 
-
+        console.log("Account changed");
+        
         
         const accountAddress = accounts[0];
-        console.log(accountAddress);
-        
+
         setWeb3State((prevState) => ({ ...prevState, accountAddress }));
     
     }

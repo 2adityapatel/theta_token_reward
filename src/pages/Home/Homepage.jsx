@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Gamepad2, Trophy, Users, ScrollText, Flame, Cog } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
+
+
+
   const menuOptions = [
     { label: 'Games', icon: <Gamepad2 size={28} />, link: '/play' },
     { label: 'Leaderboard', icon: <Trophy size={28} />, link: '/leaderboard' },
