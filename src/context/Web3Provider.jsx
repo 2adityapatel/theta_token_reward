@@ -90,9 +90,8 @@ const Web3Provider = ({ children }) => {
     setTimeout(() => {
       connectWalletOnPageLoad()
       setIsInitialized(true)
-    }, 2000);
-    // connectWalletOnPageLoad()
- 
+    }, 1000);
+  
 
     const accountChangeHandler = (accounts) => {
       handleAccountChange(

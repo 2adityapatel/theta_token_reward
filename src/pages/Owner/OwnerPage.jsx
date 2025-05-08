@@ -36,6 +36,7 @@ const OwnerPage = () => {
       {loading ? (
         <div className="flex justify-center items-center min-h-[300px]">
           <PacmanLoader color="#00bcd4" size={25} />
+          <h3>Owner pacman</h3>
         </div>
       ) : (
         <div>

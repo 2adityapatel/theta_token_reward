@@ -8,27 +8,8 @@ import { toast } from "react-toastify";
 import ProtectedRoute from "../components/ProtectRoute/ProtectedRoute";
 
 
-// Add funtionality of Layout Outlet from router dom
 
 
-const checkWalletConnection = () => {
-
-    const navigate = useNavigate();
-
-    const  web3State  = useWeb3State()
-    console.log(web3State);
-    
-console.log(isWalletConnected);
-
-    if(isWalletConnected == null){
-        toast.info("Connect your wallet first !! - - - - -- ")
-        navigate('/');
-    }
-
-
-    return true;
-
-}
 
 export const routes = createBrowserRouter(
     [
@@ -42,11 +23,19 @@ export const routes = createBrowserRouter(
                 },
                 {
                     path:"/owner",
-                    element: (() => checkWalletConnection() )&& <OwnerPage/>
+                    element: (
+                        <ProtectedRoute>
+                            <OwnerPage/>
+                        </ProtectedRoute>
+                    )
                 },
                 {
                     path:"/teams",
-                    element: (() => checkWalletConnection() )&& <Teams/>
+                    element: (
+                        <ProtectedRoute>
+                            <Teams />
+                        </ProtectedRoute>
+                    )
                 }
             ]
         }

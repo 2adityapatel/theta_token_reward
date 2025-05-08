@@ -4,8 +4,6 @@ export const handleAccountChange = async (setIsWalletConnected, accounts, setWeb
     
     if (accounts.length === 0) {
             // No accounts are connected
-            console.log(accounts.length);
-            console.log("No accounts connected");
             
             localStorage.removeItem("isWalletConnected");
             setWeb3State({

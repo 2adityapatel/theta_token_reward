@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { Copy } from 'lucide-react';
+import { Copy, HeartHandshakeIcon } from 'lucide-react';
 
 const Footer = () => {
   const donationAddress = '0x6CaC4F1077077973DB15784597F5197288148297'; // replace with your real address
@@ -19,7 +19,7 @@ const Footer = () => {
           onClick={handleDonateClick}
           className="flex items-center gap-2 bg-cyan-700 hover:bg-cyan-600 text-white px-3 py-1.5 rounded-xl transition-colors duration-200"
         >
-          <Copy size={16} /> Copy
+          <HeartHandshakeIcon size={16} /> Donate
         </button>
       </div>
     </footer>

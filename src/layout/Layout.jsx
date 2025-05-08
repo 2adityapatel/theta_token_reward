@@ -18,7 +18,10 @@ const Layout = () => {
         
         <main className="">
           {!isInitialized ? (
+            <div className="flex justify-center items-center min-h-[300px]">
             <PacmanLoader color="#00bcd4" size={25} />
+            <h3>Layout Pacman</h3>
+          </div>
           ) : (
             <Outlet />
           )}

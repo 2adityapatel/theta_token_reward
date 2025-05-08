@@ -6,28 +6,26 @@ import { useEffect } from 'react';
 
 const ProtectedRoute = ({children}) => {
 
-    const {isWalletConnected, } = useWeb3State();
+    const walletStatus = localStorage.getItem("isWalletConnected")
     const navigate = useNavigate()
-
-    console.log("is connected");
-    console.log(isWalletConnected);
-    
-    
+    const { isWalletConnected } = useWeb3State()
+   
 
     useEffect(()=>{
 
-        if(!isWalletConnected){
-            toast.info("Connect your wallet first !! Before home")
+        if(!walletStatus){
+            toast.info("Connect your wallet first !")
             navigate("/")
         }    
 
-    }, [isWalletConnected])
+    }, [isWalletConnected, navigate])
 
     
-    if(isWalletConnected){
+    if(walletStatus){
         return children;
     }
 
+   
 
 }
 
