@@ -10,7 +10,7 @@ const HomePage = () => {
     { label: 'Teams', icon: <ScrollText size={28} />, link: '/teams' },
     { label: 'Owner', icon: <Users size={28} />, link: '/owner' },
     { label: 'Legacy Mode', icon: <Flame size={28} />, link: '/legacy' },
-    { label: 'My details', icon: <Cog size={28} />, link: '/settings' },
+    { label: 'My Profile', icon: <Cog size={28} />, link: '/profile' },
   ];
 
   return (

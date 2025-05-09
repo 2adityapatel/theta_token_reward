@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useWeb3State } from "../../context/useWeb3Context";
 import { PacmanLoader } from "react-spinners";
 import { toast } from "react-toastify";
+import FundMembers from "../../components/Owner/FundMembers";
 
 const OwnerPage = () => {
   const { web3State, isWalletConnected } = useWeb3State();
@@ -42,6 +43,7 @@ const OwnerPage = () => {
         <div>
           <h1>Owner Page</h1>
           <h3>{accountAddress}</h3>
+          <FundMembers/>
         </div>
       )}
     </>
